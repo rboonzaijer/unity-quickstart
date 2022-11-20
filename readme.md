@@ -34,7 +34,6 @@ https://github.com/rboonzaijer/gitlab-docker
 - `git lfs install`
 - `git add .`
 - `git commit -m "initial"`
-- Copy `post-merge` and `pre-commit` to the hidden folder `.git/hooks` (replace existing)
 - Create new empty project in Gitlab (or other git place...)
 - `git remote add origin {repository-url}`
 - `git push -u origin main`
@@ -45,8 +44,8 @@ https://github.com/rboonzaijer/gitlab-docker
 # HOWTO use existing Unity project (with GIT/LFS)
 
 - `git clone {repository-url}`
-- Copy `post-merge` and `pre-commit` to the hidden folder `.git/hooks` (replace existing)
 
+  ( lfs will already be enabled if it's enabled in the repository )
 
 # More info
 
