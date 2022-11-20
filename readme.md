@@ -20,7 +20,7 @@ https://github.com/rboonzaijer/gitlab-docker
 - File > Save Project
 
 ## Git setup
-- Copy ***all files*** from the directory `all-unity-root-files` to the **root** of the project
+- Copy ***all files*** from the directory `all-unity-root-files` to the **root** of the project (+ the 'git-lfs-logo.png to directly test if it works)
 
   (TIP: Download this repo as zip: https://github.com/rboonzaijer/unity-quickstart/archive/refs/heads/master.zip)
 
