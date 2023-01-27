@@ -24,12 +24,11 @@ https://github.com/rboonzaijer/gitlab-docker
 
   (TIP: Download this repo as zip: https://github.com/rboonzaijer/unity-quickstart/archive/refs/heads/master.zip)
 
-- Change to your Unity version number:
-  - .gitconfig (change path)
-  - .gitconfig-2021.3.13f1 (change filename only)
+- Run (doubleclick): .gitconfig-update-version.bat (Every time you update your Unity version)
+  The version will be updated in these files: `.gitconfig` &  `.gitconfig---2021.3.13f1`
 
-- Start > cmd
-- `cd "\git\My New Project"`
+
+- `cd "git\My New Project"`
 - `git init`
 - `git lfs install`
 - `git add .`
