@@ -70,7 +70,6 @@ rakefile    text
 *.pict filter=lfs diff=lfs merge=lfs -text
 *.pdf filter=lfs diff=lfs merge=lfs -text
 *.hdr filter=lfs diff=lfs merge=lfs -text
-*.svg filter=lfs diff=lfs merge=lfs -text
 
 # LFS Video Files
 *.mp4 filter=lfs diff=lfs merge=lfs -text
