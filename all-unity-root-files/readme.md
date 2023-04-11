@@ -2,7 +2,7 @@
 ```bash
 git init
 git lfs install
-git add
+git add .
 git commit -m "initial"
 ```
 
