@@ -1,9 +1,6 @@
 # Create
 ```bash
-git init
-git lfs install
-git add .
-git commit -m "initial"
+git init && git lfs install && git add . && git commit -m "initial"
 ```
 
 Set new empty project repository url + push
