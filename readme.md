@@ -39,8 +39,11 @@ https://github.com/rboonzaijer/gitlab-docker
 
   ![Example](screenshot.png)
 
+## Add to existing GIT (non-lfs) project
 
-## Add to existing git repo
+- See: https://github.com/rboonzaijer/unity-git-migrate-to-lfs
+
+## Add to existing non-git project
 
 ```
 curl -O https://raw.githubusercontent.com/rboonzaijer/unity-quickstart/main/all-unity-root-files/.gitattributes && \
@@ -52,13 +55,9 @@ curl -O https://raw.githubusercontent.com/rboonzaijer/unity-quickstart/main/all-
 curl -O https://raw.githubusercontent.com/rboonzaijer/unity-quickstart/main/all-unity-root-files/readme.md
 
 git add .
-git commit -m "prepare migration to LFS"
-
-git lfs migrate import
-
-git remote set-url origin ssh://git@{host}:{port}/{new-repo}.git
-
-git push
+git commit -m "initial"
+git remote add origin ssh://git@{host}:{port}/{new-repo}.git
+git push -u origin main
 ```
 
 # HOWTO use existing Unity project (with GIT/LFS)
