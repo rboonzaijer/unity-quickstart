@@ -1,4 +1,35 @@
-# HOWTO Setup new Unity project (with GIT/LFS)
+# Unity Quickstart (with GIT/LFS)
+
+## Add to existing GIT (non-lfs) project
+
+- See: https://github.com/rboonzaijer/unity-git-migrate-to-lfs
+
+## Add to existing non-git project
+
+```
+curl -O https://raw.githubusercontent.com/rboonzaijer/unity-quickstart/main/all-unity-root-files/.gitattributes
+curl -O https://raw.githubusercontent.com/rboonzaijer/unity-quickstart/main/all-unity-root-files/.gitconfig
+curl -O https://raw.githubusercontent.com/rboonzaijer/unity-quickstart/main/all-unity-root-files/.gitconfig---2021.3.13f1
+curl -O https://raw.githubusercontent.com/rboonzaijer/unity-quickstart/main/all-unity-root-files/.gitconfig-update-version.bat
+curl -O https://raw.githubusercontent.com/rboonzaijer/unity-quickstart/main/all-unity-root-files/.gitignore
+curl -O https://raw.githubusercontent.com/rboonzaijer/unity-quickstart/main/all-unity-root-files/git-lfs-logo.png
+curl -O https://raw.githubusercontent.com/rboonzaijer/unity-quickstart/main/all-unity-root-files/readme.md
+
+# Doubleclick on '.gitconfig-update-version.bat' to automatically read + update the version in .gitconfig
+
+git init
+git lfs install
+git add .
+git commit -m "initial"
+git remote add origin ssh://git@{host}:{port}/{new-repo}.git
+git push -u origin main
+```
+
+# HOWTO use existing Unity project (with GIT/LFS)
+
+- `git clone {repository-url}`
+
+  ( lfs will already be enabled if it's enabled in the repository )
 
 ## Setup client
 - Install git: https://git-scm.com
@@ -39,32 +70,6 @@ https://github.com/rboonzaijer/gitlab-docker
 
   ![Example](screenshot.png)
 
-## Add to existing GIT (non-lfs) project
-
-- See: https://github.com/rboonzaijer/unity-git-migrate-to-lfs
-
-## Add to existing non-git project
-
-```
-curl -O https://raw.githubusercontent.com/rboonzaijer/unity-quickstart/main/all-unity-root-files/.gitattributes && \
-curl -O https://raw.githubusercontent.com/rboonzaijer/unity-quickstart/main/all-unity-root-files/.gitconfig && \
-curl -O https://raw.githubusercontent.com/rboonzaijer/unity-quickstart/main/all-unity-root-files/.gitconfig---2021.3.13f1 && \
-curl -O https://raw.githubusercontent.com/rboonzaijer/unity-quickstart/main/all-unity-root-files/.gitconfig-update-version.bat && \
-curl -O https://raw.githubusercontent.com/rboonzaijer/unity-quickstart/main/all-unity-root-files/.gitignore && \
-curl -O https://raw.githubusercontent.com/rboonzaijer/unity-quickstart/main/all-unity-root-files/git-lfs-logo.png && \
-curl -O https://raw.githubusercontent.com/rboonzaijer/unity-quickstart/main/all-unity-root-files/readme.md
-
-git add .
-git commit -m "initial"
-git remote add origin ssh://git@{host}:{port}/{new-repo}.git
-git push -u origin main
-```
-
-# HOWTO use existing Unity project (with GIT/LFS)
-
-- `git clone {repository-url}`
-
-  ( lfs will already be enabled if it's enabled in the repository )
 
 # More info
 
