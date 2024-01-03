@@ -14,9 +14,11 @@ curl -O https://raw.githubusercontent.com/rboonzaijer/unity-quickstart/main/all-
 curl -O https://raw.githubusercontent.com/rboonzaijer/unity-quickstart/main/all-unity-root-files/.gitignore
 curl -O https://raw.githubusercontent.com/rboonzaijer/unity-quickstart/main/all-unity-root-files/git-lfs-logo.png
 curl -O https://raw.githubusercontent.com/rboonzaijer/unity-quickstart/main/all-unity-root-files/readme.md
+```
 
-# Doubleclick on '.gitconfig-update-version.bat' to automatically read + update the version in .gitconfig
+- Doubleclick on '.gitconfig-update-version.bat' to automatically read + update the version in .gitconfig
 
+```
 git init
 git lfs install
 git add .
