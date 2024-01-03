@@ -50,6 +50,15 @@ curl -O https://raw.githubusercontent.com/rboonzaijer/unity-quickstart/main/all-
 curl -O https://raw.githubusercontent.com/rboonzaijer/unity-quickstart/main/all-unity-root-files/.gitignore && \
 curl -O https://raw.githubusercontent.com/rboonzaijer/unity-quickstart/main/all-unity-root-files/git-lfs-logo.png && \
 curl -O https://raw.githubusercontent.com/rboonzaijer/unity-quickstart/main/all-unity-root-files/readme.md
+
+git add .
+git commit -m "prepare migration to LFS"
+
+git lfs migrate import
+
+git remote set-url origin ssh://git@{host}:{port}/{new-repo}.git
+
+git push
 ```
 
 # HOWTO use existing Unity project (with GIT/LFS)
