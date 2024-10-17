@@ -15,3 +15,20 @@ git push -u origin main
 ```bash
 git lfs checkout
 ```
+
+# Add new files to LFS
+
+```bash
+git lfs track "/Assets/**/NavMesh.asset"
+git lfs track "/Assets/**/*NavMesh.asset"
+git lfs track "/Assets/**/*NavMesh*.asset"
+git lfs track "/Assets/**/NavMesh*.asset"
+
+git lfs track "/Assets/**/navmesh.asset"
+git lfs track "/Assets/**/*navmesh.asset"
+git lfs track "/Assets/**/*navmesh*.asset"
+git lfs track "/Assets/**/navmesh*.asset"
+
+git add --renormalize .
+git commit -m "store navmeshes in LFS"
+```
