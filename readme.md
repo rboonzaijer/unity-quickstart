@@ -12,7 +12,7 @@ curl -O https://raw.githubusercontent.com/rboonzaijer/unity-quickstart/main/all-
 curl -O https://raw.githubusercontent.com/rboonzaijer/unity-quickstart/main/all-unity-root-files/.gitconfig---2021.3.13f1
 curl -O https://raw.githubusercontent.com/rboonzaijer/unity-quickstart/main/all-unity-root-files/.gitconfig-update-version.bat
 curl -O https://raw.githubusercontent.com/rboonzaijer/unity-quickstart/main/all-unity-root-files/.gitignore
-curl -O https://raw.githubusercontent.com/rboonzaijer/unity-quickstart/main/all-unity-root-files/git-lfs-logo.png
+curl -O https://media.githubusercontent.com/media/rboonzaijer/unity-quickstart/refs/heads/main/docs/all-unity-root-files/git-lfs-logo.png
 curl -O https://raw.githubusercontent.com/rboonzaijer/unity-quickstart/main/all-unity-root-files/readme.md
 ```
 
