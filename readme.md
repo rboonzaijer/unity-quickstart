@@ -6,7 +6,7 @@
 
 ## Add to existing non-git project
 
-```
+```bash
 curl -O https://raw.githubusercontent.com/rboonzaijer/unity-quickstart/main/all-unity-root-files/.gitattributes
 curl -O https://raw.githubusercontent.com/rboonzaijer/unity-quickstart/main/all-unity-root-files/.gitconfig
 curl -O https://raw.githubusercontent.com/rboonzaijer/unity-quickstart/main/all-unity-root-files/.gitconfig---2021.3.13f1
@@ -17,13 +17,20 @@ curl -O -L https://raw.githubusercontent.com/rboonzaijer/unity-quickstart/main/a
 curl -L -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:137.0) Gecko/20100101 Firefox/137.0" -O https://media.githubusercontent.com/media/rboonzaijer/unity-quickstart/refs/heads/main/all-unity-root-files/git-lfs-logo.png
 ```
 
+- Open current folder in Explorer:
+
+```bash
+explorer .
+```
+
 - Doubleclick on '.gitconfig-update-version.bat' to automatically read + update the version in .gitconfig
 
-```
+```bash
 git init
 git lfs install
 git add .
 git commit -m "initial"
+
 git remote add origin ssh://git@{host}:{port}/{new-repo}.git
 git push -u origin main
 ```
