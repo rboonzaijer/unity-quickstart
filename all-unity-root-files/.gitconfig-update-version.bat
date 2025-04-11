@@ -29,7 +29,7 @@ echo - Write: .gitconfig
   echo tool = unityyamlmerge&echo\
   echo [mergetool "unityyamlmerge"]
   echo trustExitCode = false
-  echo cmd = 'C:\\Program Files\\Unity\\Hub\\Editor\\%UNITY_VERSION%\\Editor\\Data\\Tools\\UnityYAMLMerge.exe' merge -p "$BASE" "$REMOTE" "$LOCAL" "$MERGED"
+  echo cmd = 'E:\\Unity\\Editors\\%UNITY_VERSION%\\Editor\\Data\\Tools\\UnityYAMLMerge.exe' merge -p "$BASE" "$REMOTE" "$LOCAL" "$MERGED"
 ) > .gitconfig
 
 :: create a new .gitconfig=={version} file to indicate which version currently is used
@@ -39,4 +39,4 @@ echo - Write: .gitconfig---%UNITY_VERSION%
   echo "Update the filename (+ the path in .gitconfig) on every Editor-version upgrade!"
 ) > .gitconfig---%UNITY_VERSION%
 
-timeout 10
+timeout 4
