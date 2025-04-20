@@ -38,7 +38,7 @@ if [ "$STAGED_FILES_TOO_LARGE" != "" ]; then
 			size=$(echo "$line" | cut -f1)
 
 			echo "    $size"
-			echo ">>> git lfs track \"$path\" && git add \"$path\" <<<"
+			echo ">>> git lfs track \"$path\" && git add --renormalize \"$path\" <<<"
 		fi
 	done
 fi
@@ -82,7 +82,7 @@ if [ "$STAGED_FILES_WARNINGS" != "" ]; then
 			size=$(echo "$line" | cut -f1)
 
 			echo " [WARNING] $size"
-			echo ">>> git lfs track \"$path\" && git add \"$path\" <<<"
+			echo ">>> git lfs track \"$path\" && git add --renormalize \"$path\" <<<"
 		fi
 	done
 fi
