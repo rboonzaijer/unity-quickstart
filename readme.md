@@ -1,6 +1,8 @@
 # Unity Quickstart (with GIT/LFS)
 
-## Add to existing non-git project
+## Add to new non-git project
+
+- Open command prompt (Win+R -> 'cmd')
 
 ```bash
 curl -O https://raw.githubusercontent.com/rboonzaijer/unity-quickstart/main/all-unity-root-files/.gitattributes
@@ -34,20 +36,13 @@ git remote add origin ssh://git@{host}:{port}/{new-repo}.git
 git push -u origin main
 ```
 
+![Example](screenshot.png)
+
 # HOWTO use existing Unity project (with GIT/LFS)
 
 - `git clone {repository-url}`
 
-  ( lfs will already be enabled if it's enabled in the repository )
-
-## Setup client
-- Install git: https://git-scm.com
-- Install git-lfs: https://git-lfs.github.com
-- Setup SSH keys: https://docs.gitlab.com/ee/user/ssh.html#generate-an-ssh-key-pair
-
-## (optional) Setup private Gitlab server
-https://github.com/rboonzaijer/gitlab-docker
-
+( lfs will already be enabled if it's enabled in the repository )
 
 ## Project setup
 
@@ -59,25 +54,7 @@ https://github.com/rboonzaijer/gitlab-docker
 
 - File > Save Project
 
-## Git setup
-- Copy ***all files*** from the directory `all-unity-root-files` to the **root** of the project (+ optionally the https://github.com/rboonzaijer/unity-quickstart/raw/main/git-lfs-logo.png to directly test if it works)
 
-  (TIP: Download this repo as zip: https://github.com/rboonzaijer/unity-quickstart/archive/refs/heads/master.zip)
-
-- Run (doubleclick): .gitconfig-update-version.bat (Every time you update your Unity version)
-  The version will be updated in these files: `.gitconfig` &  `.gitconfig---2021.3.13f1`
-
-
-- `cd "git\My New Project"`
-- `git init`
-- `git lfs install`
-- `git add .`
-- `git commit -m "initial"`
-- Create new empty project in Gitlab (or other git place...)
-- `git remote add origin {repository-url}`
-- `git push -u origin main`
-
-  ![Example](screenshot.png)
 
 
 # More info
