@@ -1,9 +1,5 @@
 # Unity Quickstart (with GIT/LFS)
 
-## Add to existing GIT (non-lfs) project
-
-- See: https://github.com/rboonzaijer/unity-git-migrate-to-lfs
-
 ## Add to existing non-git project
 
 ```bash
