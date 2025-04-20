@@ -266,7 +266,3 @@ rakefile    text
 /Assets/**/*NavMesh.asset filter=lfs diff=lfs merge=lfs -text
 /Assets/**/*NavMesh*.asset filter=lfs diff=lfs merge=lfs -text
 /Assets/**/NavMesh*.asset filter=lfs diff=lfs merge=lfs -text
-/Assets/**/navmesh.asset filter=lfs diff=lfs merge=lfs -text
-/Assets/**/*navmesh.asset filter=lfs diff=lfs merge=lfs -text
-/Assets/**/*navmesh*.asset filter=lfs diff=lfs merge=lfs -text
-/Assets/**/navmesh*.asset filter=lfs diff=lfs merge=lfs -text
