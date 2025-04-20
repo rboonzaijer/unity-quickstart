@@ -29,6 +29,7 @@ explorer .
 git init
 git lfs install
 git add .
+curl -o .git/hooks/pre-commit https://raw.githubusercontent.com/rboonzaijer/unity-quickstart/main/all-unity-root-files/pre-commit
 git commit -m "initial"
 ```
 
