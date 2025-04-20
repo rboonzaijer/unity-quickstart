@@ -1,6 +1,14 @@
 # Unity Quickstart (with GIT/LFS)
 
-## Add to new non-git project
+## New Unity Project
+
+- Edit > Project Settings:
+    - [Category: Editor] Asset Serialization / Mode: “Force Text”
+    - [Category: Version Control ] Mode: “Visible Meta Files”
+
+- File > Save Project
+
+## Download files
 
 - Open command prompt (Win+R -> 'cmd')
 
@@ -21,7 +29,7 @@ curl -L -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:137.0) Gecko/20100101 F
 explorer .
 ```
 
-- Doubleclick on '.gitconfig-update-version.bat' to automatically read + update the version in .gitconfig
+- Doubleclick on '<ins>**.gitconfig-update-version.bat**</ins>'
 
 ```bash
 git init
@@ -43,16 +51,6 @@ git push -u origin main
 - `git clone {repository-url}`
 
 ( lfs will already be enabled if it's enabled in the repository )
-
-## Project setup
-
-- Unity Hub > New project > {type=`3D`, Project Name=`"My New Project"`, Location=`C:\git`} > Create project
-
-- Edit > Project Settings:
-    - [Category: Editor] Asset Serialization / Mode: “Force Text”
-    - [Category: Version Control ] Mode: “Visible Meta Files”
-
-- File > Save Project
 
 
 
