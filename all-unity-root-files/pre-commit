@@ -1,0 +1,105 @@
+#!/bin/sh
+
+ORIGINAL_IFS=$IFS
+NEWLINE_IFS="
+"
+
+# Collect paths that are tracked with LFS (use to detect errors and warnings)
+LFS_TRACKED_FILES=$(git lfs ls-files --name-only)
+
+
+
+# Verify if staged files that are too large for the repository are tracked with LFS
+IFS=$NEWLINE_IFS
+HAS_ERROR="false"
+STAGED_FILES_TOO_LARGE=$(git diff --name-only --cached -z | xargs -0 du -h --threshold=50M | sort -h)
+if [ "$STAGED_FILES_TOO_LARGE" != "" ]; then
+	# Iterate over each line
+	for line in $STAGED_FILES_TOO_LARGE; do
+		# Example line:   205M     Assets/MyBigFile.cs
+		
+		# path=Assets/MyBigFile.cs
+		path=$(echo "$line" | cut -f2-)
+
+		# Check if the large file is tracked with LFS
+		is_tracked_with_lfs="false"
+		for LFS_TRACKED_FILE in $LFS_TRACKED_FILES; do
+			if [ "$LFS_TRACKED_FILE" = "$path" ]; then
+				is_tracked_with_lfs="true"
+			fi
+		done
+
+		# Too large file is not tracked with LFS yet, mark error and show message
+		if [ "$is_tracked_with_lfs" = "false" ]; then
+			HAS_ERROR="1"
+			echo ""
+
+			# size=105M
+			size=$(echo "$line" | cut -f1)
+
+			echo "    $size"
+			echo ">>> git lfs track \"$path\" && git add \"$path\" <<<"
+		fi
+	done
+fi
+IFS=$ORIGINAL_IFS
+
+if [ "$HAS_ERROR" != "false" ]; then
+	# Exit with error code
+	echo ""
+	echo >&2 "ERROR: The files above should be added to git LFS (exiting...)"
+	exit 1
+fi
+
+
+
+# Show warning if staged files are probably too large for the repository (but with option to continue)
+IFS=$NEWLINE_IFS
+HAS_WARNING="false"
+STAGED_FILES_WARNINGS=$(git diff --name-only --cached -z | xargs -0 du -h --threshold=10M | sort -h)
+if [ "$STAGED_FILES_WARNINGS" != "" ]; then
+	# Iterate over each line
+	for line in $STAGED_FILES_WARNINGS; do
+		# Example line:   35M     Assets/MyBigFile.cs
+		
+		# path=Assets/MyBigFile.cs
+		path=$(echo "$line" | cut -f2-)
+
+		# Check if the large file is tracked with LFS
+		is_tracked_with_lfs="false"
+		for LFS_TRACKED_FILE in $LFS_TRACKED_FILES; do
+			if [ "$LFS_TRACKED_FILE" = "$path" ]; then
+				is_tracked_with_lfs="true"
+			fi
+		done
+
+		# Too large file is not tracked with LFS yet, mark error and show message
+		if [ "$is_tracked_with_lfs" = "false" ]; then
+			HAS_WARNING="1"
+			echo ""
+			
+			# size=35M
+			size=$(echo "$line" | cut -f1)
+
+			echo " [WARNING] $size"
+			echo ">>> git lfs track \"$path\" && git add \"$path\" <<<"
+		fi
+	done
+fi
+IFS=$ORIGINAL_IFS
+
+if [ "$HAS_WARNING" != "false" ]; then
+	echo ""
+	read -p "Ignore warnings and continue commit? [y|n] " -n 1 -r < /dev/tty
+	echo
+	if echo $REPLY | grep -E '^[Yy]$' > /dev/null; then
+		echo "Continue commit"
+	else
+		# Exit with error code
+		echo ":exit"
+		exit 1
+	fi
+fi
+
+# All is good, continue commit
+exit 0
