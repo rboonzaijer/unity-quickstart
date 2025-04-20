@@ -30,7 +30,9 @@ git init
 git lfs install
 git add .
 git commit -m "initial"
+```
 
+```bash
 git remote add origin ssh://git@{host}:{port}/{new-repo}.git
 git push -u origin main
 ```
