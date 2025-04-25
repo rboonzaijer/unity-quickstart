@@ -20,9 +20,14 @@ curl -O https://raw.githubusercontent.com/rboonzaijer/unity-quickstart/main/all-
 curl -O https://raw.githubusercontent.com/rboonzaijer/unity-quickstart/main/all-unity-root-files/.gitignore
 curl -O https://raw.githubusercontent.com/rboonzaijer/unity-quickstart/main/all-unity-root-files/readme.md
 curl -L -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:137.0) Gecko/20100101 Firefox/137.0" -O https://media.githubusercontent.com/media/rboonzaijer/unity-quickstart/refs/heads/main/all-unity-root-files/git-lfs-logo.png
+
 curl -O https://raw.githubusercontent.com/rboonzaijer/unity-quickstart/main/all-unity-root-files/build-profile.bat
 curl -O https://raw.githubusercontent.com/rboonzaijer/unity-quickstart/main/all-unity-root-files/build-windows-dev.bat
 curl -O https://raw.githubusercontent.com/rboonzaijer/unity-quickstart/main/all-unity-root-files/build-windows-release.bat
+
+mkdir Assets\Editor
+
+curl -o Assets\Editor\UnityPostBuildCallbacks.cs https://raw.githubusercontent.com/rboonzaijer/unity-quickstart/main/all-unity-root-files/UnityPostBuildCallbacks.cs
 ```
 
 - Open current folder in Explorer:
