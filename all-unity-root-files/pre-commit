@@ -32,19 +32,19 @@ if [ "$STAGED_FILES_TOO_LARGE" != "" ]; then
 		# Too large file is not tracked with LFS yet, mark error and show message
 		if [ "$is_tracked_with_lfs" = "false" ]; then
 			HAS_ERROR="1"
-			echo ""
 
 			# size=105M
 			size=$(echo "$line" | cut -f1)
-
-			echo "    $size"
-			echo ">>> git lfs track \"$path\" && git add --renormalize \"$path\" <<<"
+			echo "echo \"[size=$size]\" && git lfs track \"$path\" && git add --renormalize \"$path\""
 		fi
 	done
 fi
 IFS=$ORIGINAL_IFS
 
 if [ "$HAS_ERROR" != "false" ]; then
+	echo "git add --renormalize .gitattributes"
+	echo ""
+	echo ""
 	# Exit with error code
 	echo ""
 	echo >&2 "ERROR: The files above should be added to git LFS (exiting...)"
