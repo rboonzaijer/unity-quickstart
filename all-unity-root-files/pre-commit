@@ -86,6 +86,8 @@ fi
 IFS=$ORIGINAL_IFS
 
 if [ "$HAS_WARNING" != "false" ]; then
+	echo "git add --renormalize .gitattributes"
+	echo ""
 	echo ""
 	echo "Warnings detected... exiting... (see above)"
 	echo ""
