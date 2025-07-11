@@ -32,19 +32,19 @@ if [ "$STAGED_FILES_TOO_LARGE" != "" ]; then
 		# Too large file is not tracked with LFS yet, mark error and show message
 		if [ "$is_tracked_with_lfs" = "false" ]; then
 			HAS_ERROR="1"
-			echo ""
 
 			# size=105M
 			size=$(echo "$line" | cut -f1)
-
-			echo "    $size"
-			echo ">>> git lfs track \"$path\" && git add --renormalize \"$path\" <<<"
+			echo "echo \"[size=$size]\" && git lfs track \"$path\" && git add --renormalize \"$path\""
 		fi
 	done
 fi
 IFS=$ORIGINAL_IFS
 
 if [ "$HAS_ERROR" != "false" ]; then
+	echo "git add --renormalize .gitattributes"
+	echo ""
+	echo ""
 	# Exit with error code
 	echo ""
 	echo >&2 "ERROR: The files above should be added to git LFS (exiting...)"
@@ -76,19 +76,20 @@ if [ "$STAGED_FILES_WARNINGS" != "" ]; then
 		# Too large file is not tracked with LFS yet, mark error and show message
 		if [ "$is_tracked_with_lfs" = "false" ]; then
 			HAS_WARNING="1"
-			echo ""
-			
+
 			# size=35M
 			size=$(echo "$line" | cut -f1)
-
-			echo " [WARNING] $size"
-			echo ">>> git lfs track \"$path\" && git add --renormalize \"$path\" <<<"
+			echo "echo \"[size=$size]\" && git lfs track \"$path\" && git add --renormalize \"$path\""
 		fi
 	done
 fi
 IFS=$ORIGINAL_IFS
 
 if [ "$HAS_WARNING" != "false" ]; then
+	echo "git add --renormalize .gitattributes"
+	echo ""
+	echo ""
+	echo "Warnings detected... exiting... (see above)"
 	echo ""
 	read -p "Ignore warnings and continue commit? [y|n] " -n 1 -r < /dev/tty
 	echo
