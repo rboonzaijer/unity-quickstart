@@ -28,6 +28,7 @@ curl -O https://raw.githubusercontent.com/rboonzaijer/unity-quickstart/main/all-
 mkdir Assets\Editor
 
 curl -o Assets\Editor\UnityPostBuildCallbacks.cs https://raw.githubusercontent.com/rboonzaijer/unity-quickstart/main/all-unity-root-files/UnityPostBuildCallbacks.cs
+curl -o Assets\Editor\UnityEditorMenuSaveAll.cs https://raw.githubusercontent.com/rboonzaijer/unity-quickstart/main/all-unity-root-files/UnityEditorMenuSaveAll.cs
 ```
 
 - Open current folder in Explorer:
@@ -37,6 +38,8 @@ explorer .
 ```
 
 - Doubleclick on '<ins>**.gitconfig-update-version.bat**</ins>'
+
+- Now go into Unity again, and press CTRL+SHIFT+ALT+S (Or: File > Save All)
 
 ```bash
 git init
