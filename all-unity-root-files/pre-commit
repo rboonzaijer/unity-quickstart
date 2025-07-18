@@ -12,7 +12,9 @@ LFS_TRACKED_FILES=$(git lfs ls-files --name-only)
 # Verify if staged files that are too large for the repository are tracked with LFS
 IFS=$NEWLINE_IFS
 HAS_ERROR="false"
-STAGED_FILES_TOO_LARGE=$(git diff --name-only --cached -z | xargs -0 du -h --threshold=50M | sort -h)
+
+# 50+ MB (exit directly)
+STAGED_FILES_TOO_LARGE=$(git diff --name-only --cached -z | xargs -0 -I {} du -h -- "{}" | awk '$1 ~ /[0-9]+M/ && $1+0 >= 50' | sort -h)
 if [ "$STAGED_FILES_TOO_LARGE" != "" ]; then
 	# Iterate over each line
 	for line in $STAGED_FILES_TOO_LARGE; do
@@ -56,7 +58,9 @@ fi
 # Show warning if staged files are probably too large for the repository (but with option to continue)
 IFS=$NEWLINE_IFS
 HAS_WARNING="false"
-STAGED_FILES_WARNINGS=$(git diff --name-only --cached -z | xargs -0 du -h --threshold=10M | sort -h)
+
+# 10+ MB (give warning and option to exit, but allow to continue...)
+STAGED_FILES_WARNINGS=$(git diff --name-only --cached -z | xargs -0 -I {} du -h -- "{}" | awk '$1 ~ /[0-9]+M/ && $1+0 >= 10' | sort -h)
 if [ "$STAGED_FILES_WARNINGS" != "" ]; then
 	# Iterate over each line
 	for line in $STAGED_FILES_WARNINGS; do
