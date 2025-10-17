@@ -25,8 +25,8 @@ exit 0
 function Show-Usage {
     Write-Host ""
     Write-Host "- Usage:"
-    Write-Host '  & ".\BuildProfile Config.ps1 "profileName"'
+    Write-Host '  & ".\BuildConfig.ps1 "profileName"'
     Write-Host ""
     Write-Host "- Example:"
-    Write-Host '  & ".\BuildProfile Config.ps1 "WindowsLZ4"'
+    Write-Host '  & ".\BuildConfig.ps1 "WindowsLZ4"'
 }

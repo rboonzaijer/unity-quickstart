@@ -1,6 +1,6 @@
 # Unity Quickstart (with GIT/LFS)
 
-## New Unity Project
+## Step 1. Create new Unity Project
 
 - Edit > Project Settings:
     - [Category: Editor] Asset Serialization / Mode: “Force Text”
@@ -8,31 +8,37 @@
 
 - File > Save Project
 
-## Download files
+## Step 2. Download files
+
+Note, png file requires a [user agent](https://www.whatismybrowser.com/guides/the-latest-user-agent/firefox) to download (used 'Firefox on Linux')
 
 - Open command prompt (Win+R -> 'cmd')
 
 ```bash
-curl -O https://raw.githubusercontent.com/rboonzaijer/unity-quickstart/main/all-unity-root-files/.gitattributes
-curl -O https://raw.githubusercontent.com/rboonzaijer/unity-quickstart/main/all-unity-root-files/.gitconfig
-curl -O https://raw.githubusercontent.com/rboonzaijer/unity-quickstart/main/all-unity-root-files/.gitconfig---[run update-version.bat]
-curl -O https://raw.githubusercontent.com/rboonzaijer/unity-quickstart/main/all-unity-root-files/.gitconfig-update-version.bat
-curl -O https://raw.githubusercontent.com/rboonzaijer/unity-quickstart/main/all-unity-root-files/.gitignore
-curl -L -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:137.0) Gecko/20100101 Firefox/137.0" -O https://media.githubusercontent.com/media/rboonzaijer/unity-quickstart/refs/heads/main/all-unity-root-files/git-lfs-logo.png
+# Example png (quick check if LFS is working)
+curl -L -A "Mozilla/5.0 (X11; Linux i686; rv:140.0) Gecko/20100101 Firefox/140.0" -O https://media.githubusercontent.com/media/rboonzaijer/unity-quickstart/refs/heads/main/all-unity-root-files/git-lfs-logo.png
 
-curl -O https://raw.githubusercontent.com/rboonzaijer/unity-quickstart/main/all-unity-root-files/- Build Scripts/BuildProfile - WindowsDefault.ps1
-curl -O https://raw.githubusercontent.com/rboonzaijer/unity-quickstart/main/all-unity-root-files/- Build Scripts/BuildProfile - WindowsLZ4.ps1
-curl -O https://raw.githubusercontent.com/rboonzaijer/unity-quickstart/main/all-unity-root-files/- Build Scripts/BuildProfile - WindowsLZ4HC.ps1
-curl -O https://raw.githubusercontent.com/rboonzaijer/unity-quickstart/main/all-unity-root-files/- Build Scripts/BuildProfile Config.ps1
-curl -O https://raw.githubusercontent.com/rboonzaijer/unity-quickstart/main/all-unity-root-files/- Build Scripts/BuildProfile.ps1
+# Gitignore/gitattributes for LFS
+curl https://raw.githubusercontent.com/rboonzaijer/unity-quickstart/main/all-unity-root-files/{.gitattributes,.gitignore} -O
 
-mkdir Assets\Editor
+# Gitconfig (for merge tool)
+curl https://raw.githubusercontent.com/rboonzaijer/unity-quickstart/main/all-unity-root-files/{.gitconfig,.gitconfig-update-version.bat} -O
+curl https://raw.githubusercontent.com/rboonzaijer/unity-quickstart/main/all-unity-root-files/.gitconfig---%5Brun%20update-version.bat%5D -o ".gitconfig---[run update-version.bat]"
 
-curl -o Assets\Editor\UnityPostBuildCallbacks.cs https://raw.githubusercontent.com/rboonzaijer/unity-quickstart/main/all-unity-root-files/UnityPostBuildCallbacks.cs
-curl -o Assets\Editor\UnityEditorMenuSaveAll.cs https://raw.githubusercontent.com/rboonzaijer/unity-quickstart/main/all-unity-root-files/UnityEditorMenuSaveAll.cs
+# Editor scripts
+curl https://raw.githubusercontent.com/rboonzaijer/unity-quickstart/main/all-unity-root-files/{UnityEditorMenuSaveAll.cs,UnityPostBuildCallbacks.cs} -o Assets\Editor\#1 --create-dirs
 
-curl -o .git/hooks/pre-commit https://raw.githubusercontent.com/rboonzaijer/unity-quickstart/main/all-unity-root-files/- Git lfs check/pre-commit
+# Build scripts
+curl https://raw.githubusercontent.com/rboonzaijer/unity-quickstart/refs/heads/main/all-unity-root-files/-%20Build%20Scripts/Build{-WindowsDefault,WindowsLZ4,WindowsLZ4HC,Config,Profile}.ps1 -o "- Build Scripts/Build#1.ps1" --create-dirs
+
+# pre-commit (git lfs - avoid committing large files without lfs)
+curl https://raw.githubusercontent.com/rboonzaijer/unity-quickstart/refs/heads/main/all-unity-root-files/-%20Git%20lfs%20check/pre-commit -o .git/hooks/pre-commit
+
+# detect unity version and update '.gitconfig' accordingly
+.gitconfig-update-version.bat
 ```
+
+## Step 3. Update Unity path/version in .gitconfig
 
 - Open current folder in Explorer:
 
@@ -42,7 +48,11 @@ explorer .
 
 - Doubleclick on '<ins>**.gitconfig-update-version.bat**</ins>'
 
-- Now go into Unity again, and press **CTRL+SHIFT+ALT+S** (Or: **File > Save All**)
+## Step 4. Open project in Unity, Save + Save Project
+
+- Go into Unity again, and press **CTRL+SHIFT+ALT+S** (Or: **File > Save All**)
+
+## Step 5. Setup GIT lfs
 
 ```bash
 git init
@@ -51,10 +61,14 @@ git add .
 git commit -m "initial"
 ```
 
+## Step 6. Push to remote
+
 ```bash
 git remote add origin ssh://git@{host}:{port}/{new-repo}.git
 git push -u origin main
 ```
+
+Now check if the png is stored with lfs:
 
 ![Example](screenshot.png)
 
