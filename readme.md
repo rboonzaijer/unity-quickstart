@@ -1,5 +1,24 @@
 # Unity Quickstart (with GIT/LFS)
 
+This will help you get a quick setup with a new Unity project and GIT LFS.
+
+## Overview:
+
+- [Setup new Project](#setup-new-project)
+  - [Step 1. Create new Unity Project](#step-1-create-new-unity-project)
+  - [Step 2. Download files from this repo](#step-2-download-files-from-this-repo)
+  - [Step 3. Open project in Unity, Save + Save Project](#step-3-open-project-in-unity-save--save-project)
+  - [Step 4. Initial commit](#step-4-initial-commit)
+  - [Step 5. Push to remote](#step-5-push-to-remote)
+- [Clone Existing Project](#clone-existing-project)
+  - [Step 1. Clone](#step-1-clone)
+  - [Step 2. Git pre-commit hook](#step-2-git-pre-commit-hook)
+- [Move to another repository](#move-to-another-repository)
+- [Add a new staged file to LFS](#add-a-new-staged-file-to-lfs)
+- [Related info](#related-info)
+
+# Setup new Project
+
 ## Step 1. Create new Unity Project
 
 - Edit > Project Settings:
@@ -8,7 +27,7 @@
 
 - File > Save Project
 
-## Step 2. Download files
+## Step 2. Download files from this repo
 
 Note, png file requires a [user agent](https://www.whatismybrowser.com/guides/the-latest-user-agent/firefox) to download (used 'Firefox on Linux')
 
@@ -66,21 +85,72 @@ You can check in your repository if the png is stored with lfs.
 - Github:
   ![Example](readme-lfs-github.png)
 
-# HOWTO use existing Unity project (with GIT/LFS)
+# Clone Existing Project
 
-- `git clone {repository-url}` (lfs will already be enabled if it's enabled in the repository)
-- Navigate to `Project/- Git lfs check/pre-commit-install.ps1` Rightclick > Run with PowerShell
-
-# Move to another repository (from github to gitlab for example)
-
-- You have to make sure your local files are the 'real' files, and not LFS pointers
+## Step 1. Clone
 
 ```bash
-git lfs install
+git clone {repo}
+```
+
+GIT LFS will already be enabled (if it was enabled in the repository) and it should already download all the LFS-tracked files, but if you need it:
+
+```bash
+# Download lfs objects for current branch
+git lfs fetch
+
+# Download lfs objects for all branches
 git lfs fetch --all
 ```
 
-# More info
+## Step 2. Git pre-commit hook
 
+- Navigate to `Project/- Git lfs check/pre-commit-install.ps1` Rightclick > Run with PowerShell
+
+# Move to another repository
+
+Example: from Github to Gitlab, including all LFS objects
+
+```bash
+# Clone the repository as a mirror into "repo-mirror"
+git clone --mirror git@github.com:rboonzaijer/source-unity-project.git repo-mirror
+cd repo-mirror
+
+# Download all LFS objects for all refs (not just current branch)
+git lfs fetch --all
+
+# Point the "origin" remote to the new GitLab repo
+git remote set-url origin git@gitlab.com:rboonzaijer/target-unity-project.git
+
+# First, push all LFS files (for all branches/tags) to the new remote
+git lfs push --all origin
+
+# Now push all refs (branches, tags, etc.) to the new remote
+git push --mirror origin
+```
+
+# Add a new staged file to LFS
+
+```bash
+# Optional (perhaps the file is already added to the staged files)
+git add "Assets/My file.large"
+# or add all files:   git add .
+
+# Track if with lfs (will be added to .gitattributes)
+git lfs track -- "Assets/My file.large"
+
+# Add .gitattributes
+git add .gitattributes
+
+# Add the file and renormalize
+git add --renormalize -- "Assets/My file.large"
+
+# now commit...
+```
+
+# Related info
+
+- https://github.com/git-lfs/git-lfs/tree/main/docs/man
+- https://github.com/git-lfs/git-lfs/wiki/Tutorial
 - https://github.com/NYUGameCenter/Unity-Git-Config
 - https://www.gamedeveloper.com/programming/the-complete-guide-to-unity-git
