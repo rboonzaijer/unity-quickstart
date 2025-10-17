@@ -1,12 +1,8 @@
 #!/bin/sh
 
-# This will do a check before each commit to make sure no extreme large files (above $min_bytes_error) are stored without git-lfs.
-
+# This will do a check before each commit to make sure no extreme large files (configurable) are stored without git-lfs.
 # Save this file as: .git/hooks/pre-commit
-# Workflow: Do each commit from the windows commandline (cmd).
-# It also gives warnings for files above $min_bytes_warning, but you are able to continue the commit.
-# When warnings or errors occur, it will also give the commands to fix them.
-
+# Check latest version on: https://github.com/rboonzaijer/unity-quickstart
 
 # thresholds
 min_bytes_warning=$((10 * 1024 * 1024))   # 10 MB
