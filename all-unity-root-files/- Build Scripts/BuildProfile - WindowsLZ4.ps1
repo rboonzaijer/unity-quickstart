@@ -1,0 +1,5 @@
+# Set default profile name
+$PROFILE_NAME = "WindowsLZ4"
+
+# Call the build script with the profile name
+& ".\BuildProfile Config.ps1" -PROFILE_NAME $PROFILE_NAME

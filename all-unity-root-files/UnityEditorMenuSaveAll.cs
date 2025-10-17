@@ -1,4 +1,10 @@
+// Assets/Editor/UnityEditorMenuSaveAll.cs
+
+// This file will add a 'Save All' to the Unity Editor menu, to execute both the 'File/Save' and 'File/Save Project', to avoid corrupt Scene's.
+// It can be triggered with the shortcut CTRL+SHIFT+ALT+S
+
 #if UNITY_EDITOR
+
 using UnityEditor;
 using UnityEngine;
 

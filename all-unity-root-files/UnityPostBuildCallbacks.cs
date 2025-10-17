@@ -1,6 +1,17 @@
-# if UNITY_EDITOR
-
 // Assets/Editor/UnityPostBuildCallbacks.cs
+
+// This file will ensure there is a 'version.txt' placed in the Build directory directly after each build
+// To edit this version, go to Unity > Edit > Project Settings > Player > Version
+// The file contents will be like below (Company Name, Product Name, Version)
+
+// Example: /Build/version.txt
+
+// DefaultCompany
+// my-project
+// 0.1.0
+
+
+# if UNITY_EDITOR
 
 using System.IO;
 using System.Text;
