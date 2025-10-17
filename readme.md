@@ -13,28 +13,23 @@
 Note, png file requires a [user agent](https://www.whatismybrowser.com/guides/the-latest-user-agent/firefox) to download (used 'Firefox on Linux')
 
 - Open command prompt (Win+R -> 'cmd')
+- Copy the following commands and paste/execute them all at once
 
 ```bash
-# Example png (quick check if LFS is working)
-curl -L -A "Mozilla/5.0 (X11; Linux i686; rv:140.0) Gecko/20100101 Firefox/140.0" -O https://media.githubusercontent.com/media/rboonzaijer/unity-quickstart/refs/heads/main/Project/git-lfs-logo.png
-
-# Gitignore/gitattributes for LFS
-curl https://raw.githubusercontent.com/rboonzaijer/unity-quickstart/main/Project/{.gitattributes,.gitignore} -O
-
-# Gitconfig (for merge tool)
-curl https://raw.githubusercontent.com/rboonzaijer/unity-quickstart/main/Project/{.gitconfig,.gitconfig-update-version.bat} -O
-curl https://raw.githubusercontent.com/rboonzaijer/unity-quickstart/main/Project/.gitconfig---%5Brun%20update-version.bat%5D -o ".gitconfig---[run update-version.bat]"
-
-# Editor scripts
-curl https://raw.githubusercontent.com/rboonzaijer/unity-quickstart/main/Project/Assets/Editor/{UnityEditorMenuSaveAll.cs,UnityPostBuildCallbacks.cs} -o Assets\Editor\#1 --create-dirs
-
-# Build scripts
-curl https://raw.githubusercontent.com/rboonzaijer/unity-quickstart/refs/heads/main/Project/-%20Build%20Scripts/Build{-WindowsDefault,WindowsLZ4,WindowsLZ4HC,Config,Profile}.ps1 -o "- Build Scripts/Build#1.ps1" --create-dirs
-
-# pre-commit (git lfs - avoid committing large files without lfs)
+git init
+git lfs install
 curl https://raw.githubusercontent.com/rboonzaijer/unity-quickstart/refs/heads/main/Project/-%20Git%20lfs%20check/pre-commit -o .git/hooks/pre-commit
 
-# detect unity version and update '.gitconfig' accordingly
+curl -L -A "Mozilla/5.0 (X11; Linux i686; rv:140.0) Gecko/20100101 Firefox/140.0" -O https://media.githubusercontent.com/media/rboonzaijer/unity-quickstart/refs/heads/main/Project/git-lfs-logo.png
+
+curl https://raw.githubusercontent.com/rboonzaijer/unity-quickstart/main/Project/{.gitattributes,.gitignore} -O
+
+curl https://raw.githubusercontent.com/rboonzaijer/unity-quickstart/main/Project/Assets/Editor/{UnityEditorMenuSaveAll.cs,UnityPostBuildCallbacks.cs} -o Assets\Editor\#1 --create-dirs
+
+curl https://raw.githubusercontent.com/rboonzaijer/unity-quickstart/refs/heads/main/Project/-%20Build%20Scripts/Build{-WindowsDefault,WindowsLZ4,WindowsLZ4HC,Config,Profile}.ps1 -o "- Build Scripts/Build#1.ps1" --create-dirs
+
+curl https://raw.githubusercontent.com/rboonzaijer/unity-quickstart/main/Project/{.gitconfig,.gitconfig-update-version.bat} -O
+curl https://raw.githubusercontent.com/rboonzaijer/unity-quickstart/main/Project/.gitconfig---%5Brun%20update-version.bat%5D -o ".gitconfig---[run update-version.bat]"
 .gitconfig-update-version.bat
 ```
 
@@ -52,11 +47,9 @@ explorer .
 
 - Go into Unity again, and press **CTRL+SHIFT+ALT+S** (Or: **File > Save All**)
 
-## Step 5. Setup GIT lfs
+## Step 5. Initial commit
 
 ```bash
-git init
-git lfs install
 git add .
 git commit -m "initial"
 ```
