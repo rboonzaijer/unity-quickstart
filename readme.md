@@ -26,7 +26,7 @@ curl https://raw.githubusercontent.com/rboonzaijer/unity-quickstart/main/all-uni
 curl https://raw.githubusercontent.com/rboonzaijer/unity-quickstart/main/all-unity-root-files/.gitconfig---%5Brun%20update-version.bat%5D -o ".gitconfig---[run update-version.bat]"
 
 # Editor scripts
-curl https://raw.githubusercontent.com/rboonzaijer/unity-quickstart/main/all-unity-root-files/{UnityEditorMenuSaveAll.cs,UnityPostBuildCallbacks.cs} -o Assets\Editor\#1 --create-dirs
+curl https://raw.githubusercontent.com/rboonzaijer/unity-quickstart/main/all-unity-root-files/Assets/Editor/{UnityEditorMenuSaveAll.cs,UnityPostBuildCallbacks.cs} -o Assets\Editor\#1 --create-dirs
 
 # Build scripts
 curl https://raw.githubusercontent.com/rboonzaijer/unity-quickstart/refs/heads/main/all-unity-root-files/-%20Build%20Scripts/Build{-WindowsDefault,WindowsLZ4,WindowsLZ4HC,Config,Profile}.ps1 -o "- Build Scripts/Build#1.ps1" --create-dirs
