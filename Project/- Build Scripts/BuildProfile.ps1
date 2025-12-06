@@ -81,7 +81,7 @@ if ($LASTEXITCODE -ne 0) {
 
 # Fetch all tags from origin
 Write-Host "- git fetch all tags"
-git -C $WORKSPACE_DIR fetch --tags origin
+git -C $WORKSPACE_DIR fetch --tags -f origin
 if ($LASTEXITCODE -ne 0) {
     Write-Error "ERROR: Git fetch of tags failed in '$WORKSPACE_DIR'"
     Read-Host -Prompt "Press Enter to exit"
